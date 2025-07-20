@@ -1,12 +1,17 @@
 import React, { useEffect } from 'react';
 
-const AdBanner = () => {
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
+const AdBanner: React.FC = () => {
   useEffect(() => {
     try {
-      // Initialisation manuelle
       (window.adsbygoogle = window.adsbygoogle || []).push({});
     } catch (e) {
-      console.error('AdSense error', e);
+      console.error('AdSense error:', e);
     }
   }, []);
 
@@ -22,4 +27,3 @@ const AdBanner = () => {
 };
 
 export default AdBanner;
-
